@@ -3,5 +3,7 @@ language: ruby
 rvm:
   - 2.3.1
 before_install:
+  - bin/setup
   - bundle install
+  - rake compile
   - bundle exec rspec
