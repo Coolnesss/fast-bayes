@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
   spec.extensions = %w[ext/fast_bayes/extconf.rb]
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "rice"
+
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
