@@ -1,4 +1,10 @@
-sudo: false
+sudo: required
+dist: trusty
+
+compiler:
+    - clang
+    - gcc
+
 language: ruby
 rvm:
   - 2.3.1
