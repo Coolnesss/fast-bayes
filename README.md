@@ -1,8 +1,8 @@
 # FastBayes
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fast_bayes`. To experiment with that code, run `bin/console` for an interactive prompt.
+A fast implementation of the naive Bayes classification algorithm. Written in C++ with an interface for Ruby using [Rice](https://github.com/jasonroelofs/rice).
 
-TODO: Delete this and the text above, and describe your gem
+Performs text classification with no separate training step needed, the cost of training is split between classification and observation. This is especially useful when data is an online stream, as the system can gradually improve.
 
 ## Installation
 
@@ -38,4 +38,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
