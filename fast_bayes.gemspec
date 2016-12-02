@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["chang.rajani@gmail.com"]
 
   spec.summary       = %q{A naive bayes text classification algorithm implementation using C++ built for Ruby}
-  spec.description   = %q{A naive bayes text classification algorithm implementation using C++ built for Ruby}
+  spec.description   = %q{A naive bayes text classification algorithm built in C++, with a Ruby interface using Rice}
   spec.homepage      = "https://github.com/Coolnesss/fast-bayes"
   spec.license       = "MIT"
 
@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rake-compiler", "~> 1.0.3"
+  spec.add_development_dependency "rake-compiler",'~> 1.0', '>= 1.0.3'
 end
