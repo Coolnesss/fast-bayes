@@ -1,4 +1,4 @@
-# FastBayes
+# FastBayes [![Build Status](https://travis-ci.org/Coolnesss/fast-bayes.svg?branch=master)](https://travis-ci.org/Coolnesss/fast-bayes)
 
 A fast implementation of the naive Bayes classification algorithm. Written in C++ with an interface for Ruby using [Rice](https://github.com/jasonroelofs/rice).
 
