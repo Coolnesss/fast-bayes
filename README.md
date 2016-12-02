@@ -4,6 +4,8 @@ A fast implementation of the naive Bayes classification algorithm. Written in C+
 
 Performs text classification with no separate training step needed, the cost of training is split between classification and observation. This is especially useful when data is an online stream, as the system can gradually improve.
 
+FastBayes supports any number of classes and they don't need to be added in advance.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +24,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+[1] pry(main)> require 'fast_bayes'
+=> true
+[2] pry(main)> b = FastBayes.new
+=> #<FastBayes:0x00000002cb5d98>
+[3] pry(main)> b.observe "This sentence is good", "Good"
+=> nil
+[4] pry(main)> b.observe "This sentence is bad", "Bad"
+=> nil
+[5] pry(main)> b.classify "good stuff"
+=> "Good"
+```
 
 ## Development
 
@@ -32,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/fast_bayes.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Coolnesss/fast-bayes.
 
 
 ## License
