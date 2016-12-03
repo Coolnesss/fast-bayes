@@ -2,11 +2,13 @@
 #define bayes
 
 #include <unordered_map>
+#include <unordered_set>
 #include <map>
 #include <vector>
 #include <limits>
 #include <cmath>
 #include <sstream>
+#include "stopwords.h"
 
 using namespace std;
 typedef long long ll;
@@ -22,7 +24,11 @@ class Bayes {
         ll count = 0;
         // Total amounts of each term
         unordered_map<string, ll> term_counts;
-        double smoothing = 0.00001;
+        // Use english by default, TODO add option to use different ones
+        string default_stopwords = "ext/fast_bayes/stopwords/en";
+        unordered_set<string> stopwords;
+
+        double smoothing = 0.00000000000001;
 
         double estimate_priori(string label) {
             return (priori_counts[label] / (double) count);
@@ -42,17 +48,19 @@ class Bayes {
         }
 
     public:
-        Bayes() {}
+        Bayes() {
+            stopwords = read_stopwords(default_stopwords);
+        }
 
         // Add a new observation
         void observe(string data, string label) {
             priori_counts[label]++;
             count++;
             for(string term : tokenize_string(data)) {
+                if (stopwords.count(term)) continue;
                 word_counts[label][term]++;
                 term_counts[term]++;
             }
-
         }
 
         string classify(string data) {
