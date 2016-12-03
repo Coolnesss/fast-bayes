@@ -187,7 +187,7 @@ DISTCLEANDIRS =
 
 extout = 
 extout_prefix = 
-target_prefix = 
+target_prefix = /fast_bayes
 LOCAL_LIBS = 
 LIBS = -Wl,-R/home/chang/.rbenv/versions/2.3.1/lib -L/home/chang/.rbenv/versions/2.3.1/lib -lruby -lpthread -lgmp -ldl -lcrypt -lm   -lc
 ORIG_SRCS = main.cpp wrapper.cpp
@@ -237,7 +237,7 @@ distclean: clean distclean-so distclean-static distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(DLLIB) $(TIMESTAMP_DIR)/.RUBYARCHDIR.time
+install-so: $(DLLIB) $(TIMESTAMP_DIR)/.RUBYARCHDIR.-.fast_bayes.time
 	$(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
 clean-static::
 	-$(Q)$(RM) $(STATIC_LIB)
@@ -247,7 +247,7 @@ pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
 	@$(NULLCMD)
-$(TIMESTAMP_DIR)/.RUBYARCHDIR.time:
+$(TIMESTAMP_DIR)/.RUBYARCHDIR.-.fast_bayes.time:
 	$(Q) $(MAKEDIRS) $(@D) $(RUBYARCHDIR)
 	$(Q) $(TOUCH) $@
 
@@ -306,7 +306,7 @@ site-install-rb: install-rb
 	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $<
 
 $(DLLIB): $(OBJS) Makefile
-	$(ECHO) linking shared-object $(DLLIB)
+	$(ECHO) linking shared-object fast_bayes/$(DLLIB)
 	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHAREDXX) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 

@@ -22,7 +22,7 @@ class Bayes {
         ll count = 0;
         // Total amounts of each term
         unordered_map<string, ll> term_counts;
-        double smoothing = 0.5;
+        double smoothing = 0.00001;
 
         double estimate_priori(string label) {
             return (priori_counts[label] / (double) count);

@@ -31,7 +31,6 @@ describe FastBayes do
     test.take(n).each do |t|
         errors = errors + 1 if b.classify(t[1]) != t.first
     end
-
-    expect((errors / n)).to be <= 0.7
+    expect((errors / (n*1.0))).to be <= 0.5
   end
 end
