@@ -129,7 +129,7 @@ CFLAGS   = $(CCDLFLAGS) $(cflags)  -fPIC $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
 CPPFLAGS =  -I/home/chang/.rbenv/versions/2.3.1/include  $(DEFS) $(cppflags)  -I/home/chang/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rice-2.1.0/ruby/lib/include
-CXXFLAGS = $(CFLAGS)  -Wall -g -std=c++11 
+CXXFLAGS = $(CFLAGS)  -Wall -g -std=c++11  -Ofast  -g0 
 ldflags  = -L. -L/home/chang/.rbenv/versions/2.3.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic  -L/home/chang/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rice-2.1.0/ruby/lib/lib -lrice
 dldflags =  
 ARCH_FLAG = 
@@ -193,7 +193,7 @@ LIBS = -Wl,-R/home/chang/.rbenv/versions/2.3.1/lib -L/home/chang/.rbenv/versions
 ORIG_SRCS = main.cpp wrapper.cpp
 SRCS = $(ORIG_SRCS) 
 OBJS = main.o wrapper.o
-HDRS = $(srcdir)/bayes.h
+HDRS = $(srcdir)/stopwords.h $(srcdir)/bayes.h
 TARGET = fast_bayes
 TARGET_NAME = fast_bayes
 TARGET_ENTRY = Init_$(TARGET_NAME)

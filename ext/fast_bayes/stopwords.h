@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-inline unordered_set<string> read_stopwords(string filename) {
+inline unordered_set<string> read_stopwords(const string filename) {
     ios_base::sync_with_stdio(0);
 
     unordered_set<string> stopwords;
