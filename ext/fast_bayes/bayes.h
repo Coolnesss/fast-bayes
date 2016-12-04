@@ -49,12 +49,12 @@ class Bayes {
             count++;
 
             int prev = 0;
-            // Split by whitespace, 
+            // Split by whitespace,
             for(unsigned int i = 0; i < data.length(); i++) {
                 if (data[i] == ' ') {
                     const string term = data.substr(prev, i-prev);
-                    
-                    if (stopwords.find(term) != stopwords.end()) continue;
+
+                    if (term.length() < 2 || stopwords.find(term) != stopwords.end()) continue;
                     word_counts[label][term]++;
                     term_counts[term]++;
                     prev = i+1;
@@ -66,13 +66,13 @@ class Bayes {
             string best_class;
             double best_score = -numeric_limits<double>::infinity();
 
-            for(const auto label_pair : priori_counts) {
+            for(const auto &label_pair : priori_counts) {
                 const string label = label_pair.first;
 
                 // Score for a single label given the data
                 double score = log(estimate_priori(label));
                 int prev = 0;
-                // Split by whitespace, 
+                // Split by whitespace,
                 for(unsigned int i = 0; i < data.length(); i++) {
                     if (data[i] == ' ') {
                         score += log(estimate_term(data.substr(prev, i-prev), label));

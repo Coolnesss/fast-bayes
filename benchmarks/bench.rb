@@ -1,20 +1,18 @@
 require 'benchmark'
-require '../lib/fast_bayes/fast_bayes'
+require '/home/chang/fast_bayes/lib/fast_bayes/fast_bayes'
 require 'classifier-reborn' # Install from rubygems
+
 
 # Read newspaper data
 # Data from http://ana.cachopo.org/datasets-for-single-label-text-categorization
-d = IO.read("../ext/test/data/20ng-train-all-terms.txt")
+d = IO.read("ext/test/data/r8-train-all-terms.txt")
 training = d.split("\n").map{|x| x.split("\t")}
 
-d = IO.read("../ext/test/data/20ng-test-all-terms.txt")
+d = IO.read("ext/test/data/r8-test-all-terms.txt")
 test = d.split("\n").map{|x| x.split("\t")}
 test = test.shuffle
 
-# Classify 1000 random test data
 n = test.size
-
-
 # FastBayes
 puts Benchmark.measure {
   b = FastBayes.new
