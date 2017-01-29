@@ -45,14 +45,15 @@ class Bayes {
 
         // Add a new observation
         void observe(const string &data, const string &label) {
+            string ndata = data + " ";
             priori_counts[label]++;
             count++;
 
             int prev = 0;
             // Split by whitespace,
-            for(unsigned int i = 0; i < data.length(); i++) {
-                if (data[i] == ' ') {
-                    const string term = data.substr(prev, i-prev);
+            for(unsigned int i = 0; i < ndata.length(); i++) {
+                if (ndata[i] == ' ') {
+                    const string term = ndata.substr(prev, i-prev);
 
                     if (term.length() < 2 || stopwords.find(term) != stopwords.end()) continue;
                     word_counts[label][term]++;
@@ -63,7 +64,8 @@ class Bayes {
         }
 
         string classify(const string &data) {
-            string best_class;
+            string ndata = data + " ";
+            string best_class = "";
             double best_score = -numeric_limits<double>::infinity();
 
             for(const auto &label_pair : priori_counts) {
@@ -73,9 +75,9 @@ class Bayes {
                 double score = log(estimate_priori(label));
                 int prev = 0;
                 // Split by whitespace,
-                for(unsigned int i = 0; i < data.length(); i++) {
-                    if (data[i] == ' ') {
-                        score += log(estimate_term(data.substr(prev, i-prev), label));
+                for(unsigned int i = 0; i < ndata.length(); i++) {
+                    if (ndata[i] == ' ') {
+                        score += log(estimate_term(ndata.substr(prev, i-prev), label));
                         prev = i+1;
                     }
                 }
